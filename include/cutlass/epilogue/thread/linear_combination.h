@@ -68,7 +68,6 @@ template <
 class LinearCombination {
 public:
 
-  using ElementSource = ElementSource_;
   using ElementOutput = ElementOutput_;
   using ElementSource = ElementSource_;
   using ElementAccumulator = ElementAccumulator_;
@@ -78,7 +77,6 @@ public:
 
   static int const kCount = Count;
   static const ScaleType::Kind kScale = Scale;
-  using FragmentSource = Array<ElementSource, kCount>;
   using FragmentOutput = Array<ElementOutput, kCount>;
   using FragmentSource = Array<ElementSource, kCount>;
   using FragmentAccumulator = Array<ElementAccumulator, kCount>;
