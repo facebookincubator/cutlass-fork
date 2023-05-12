@@ -521,7 +521,7 @@ struct GELU {
   CUTLASS_HOST_DEVICE
   T operator()(T const &scalar) const {
     return T(cutlass::constants::half<T>() * scalar *
-      (cutlass::constants::one<T>() + (T)erff((float)(scalar / cutlass::constants::root_two<T>()))));
+      (cutlass::constants::one<T>() + (T)erff((float)(scalar * cutlass::constants::half_root_two<T>()))));
   }
 
   using Params = LinearCombinationGenericParams<T>;
@@ -537,7 +537,7 @@ struct GELU<float> {
   CUTLASS_HOST_DEVICE
   float operator()(float const &scalar) const {
     return cutlass::constants::half<float>() * scalar *
-      (cutlass::constants::one<float>() + erff( scalar / cutlass::constants::root_two<float>() ));
+      (cutlass::constants::one<float>() + erff( scalar * cutlass::constants::half_root_two<float>() ));
   }
 
   using Params = LinearCombinationGenericParams<float>;
@@ -553,7 +553,7 @@ struct GELU<double> {
   CUTLASS_HOST_DEVICE
   double operator()(double const &scalar) const {
     return cutlass::constants::half<double>() * scalar *
-      (cutlass::constants::one<double>() + erf( scalar / cutlass::constants::root_two<double>() ));
+      (cutlass::constants::one<double>() + erf( scalar * cutlass::constants::half_root_two<double>() ));
   }
 
   using Params = LinearCombinationGenericParams<double>;
